@@ -10,7 +10,7 @@ from prerender_utils.features_description import generate_features_description
 
 path =os.getcwd()
 dataset, len_dataset = create_dataset(path + "/input_tf")
- 
+adfawél
 # Créez une barre de progression avec le nombre total d'éléments
 progress_bar = tqdm(total=len_dataset, ncols=80, bar_format='\033[92m{l_bar}{bar}| {n_fmt}/{total_fmt}')
 i = 0
