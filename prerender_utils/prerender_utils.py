@@ -24,8 +24,8 @@ def save_map_id(data, nb_veicule = 5):  # enregistre dans le format avec une map
     data_true = {}
     data_true["senario_ID"] = id_senario
 
-    data_true["map/dir"] = data["roadgraph_samples/dir"].numpy()
-    data_true["map/xyz"] = data["roadgraph_samples/xyz"].numpy()
+    data_true["map/dir"] = [[x, y] for x, y, _ in data["roadgraph_samples/dir"].numpy()]
+    data_true["map/xy"] = [[x, y] for x, y, _ in data["roadgraph_samples/xyz"].numpy()]
     data_true["map/type"] = data["roadgraph_samples/type"].numpy()
     data_true["map/valid"] = data["roadgraph_samples/valid"].numpy()
 
@@ -50,21 +50,21 @@ def save_map_id(data, nb_veicule = 5):  # enregistre dans le format avec une map
             data_true[f"state/{id}/my/width"] = data["state/current/width"].numpy()[i]
             data_true[f"state/{id}/my/length"] = data["state/current/length"].numpy()[i]
 
-            data_true[f"state/{id}/my/current/cur_speed"] = data["state/current/speed"].numpy()[i]
-            data_true[f"state/{id}/my/current/cur_ang"] = data["state/current/bbox_yaw"].numpy()[i]
+            data_true[f"state/{id}/my/current/speed"] = data["state/current/speed"].numpy()[i]
+            data_true[f"state/{id}/my/current/ang"] = data["state/current/bbox_yaw"].numpy()[i]
 
             data_true[f"state/{id}/my/past/xy"] = creat_xy(data["state/past/x"].numpy()[i],
                                                            data["state/past/y"].numpy()[i],
                                                            -x[0], -y[0])
-            data_true[f"state/{id}/my/past/pas_speed"] = data["state/past/speed"].numpy()[i]
-            data_true[f"state/{id}/my/past/pas_ang"] = data["state/past/bbox_yaw"].numpy()[i]
+            data_true[f"state/{id}/my/past/speed"] = data["state/past/speed"].numpy()[i]
+            data_true[f"state/{id}/my/past/ang"] = data["state/past/bbox_yaw"].numpy()[i]
             data_true[f"state/{id}/my/past/valid"] = data["state/past/valid"].numpy()[i]
 
             data_true[f"state/{id}/my/future/xy"] = creat_xy(data["state/future/x"].numpy()[i],
                                                              data["state/future/y"].numpy()[i],
                                                              -x[0], -y[0])
-            data_true[f"state/{id}/my/future/pas_speed"] = data["state/future/speed"].numpy()[i]
-            data_true[f"state/{id}/my/future/pas_ang"] = data["state/future/bbox_yaw"].numpy()[i]
+            data_true[f"state/{id}/my/future/speed"] = data["state/future/speed"].numpy()[i]
+            data_true[f"state/{id}/my/future/ang"] = data["state/future/bbox_yaw"].numpy()[i]
             data_true[f"state/{id}/my/future/valid"] = data["state/future/valid"].numpy()[i]
 
             indice_triees = np.argsort(distance)[nb_inv_id + 1: nb_inv_id + 1 + nb_veicule]
@@ -77,14 +77,14 @@ def save_map_id(data, nb_veicule = 5):  # enregistre dans le format avec une map
             data_true[f"state/{id}/other/current/xy"] = creat_xy(data["state/current/x"].numpy()[indice_triees],
                                                                  data["state/current/y"].numpy()[indice_triees],
                                                                  -x[0], -y[0])
-            data_true[f"state/{id}/other/current/cur_speed"] = data["state/current/speed"].numpy()[indice_triees]
-            data_true[f"state/{id}/other/current/cur_ang"] = data["state/current/bbox_yaw"].numpy()[indice_triees]
+            data_true[f"state/{id}/other/current/speed"] = data["state/current/speed"].numpy()[indice_triees]
+            data_true[f"state/{id}/other/current/ang"] = data["state/current/bbox_yaw"].numpy()[indice_triees]
 
             data_true[f"state/{id}/other/past/xy"] = creat_xy(data["state/past/x"].numpy()[indice_triees],
                                                               data["state/past/y"].numpy()[indice_triees],
                                                               -x[0], -y[0])
-            data_true[f"state/{id}/other/past/pas_speed"] = data["state/past/speed"].numpy()[indice_triees]
-            data_true[f"state/{id}/other/past/pas_ang"] = data["state/past/bbox_yaw"].numpy()[indice_triees]
+            data_true[f"state/{id}/other/past/speed"] = data["state/past/speed"].numpy()[indice_triees]
+            data_true[f"state/{id}/other/past/ang"] = data["state/past/bbox_yaw"].numpy()[indice_triees]
             data_true[f"state/{id}/other/past/valid"] = data["state/past/valid"].numpy()[indice_triees]
 
     np.savez_compressed(f"out/{id_senario}.npz", **data_true)  # print(data_true)

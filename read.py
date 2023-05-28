@@ -12,3 +12,4 @@ for l in list :
     for item in lst:
         print(item)
         print(data[item])
+    break #a enlever si on veux afficher tout
