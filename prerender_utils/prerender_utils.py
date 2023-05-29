@@ -49,6 +49,7 @@ def save_map_id(data, nb_veicule = 5):  # enregistre dans le format avec une map
             data_true[f"state/{id}/my/shift"] = [x[0], y[0]]
             data_true[f"state/{id}/my/width"] = data["state/current/width"].numpy()[i]
             data_true[f"state/{id}/my/length"] = data["state/current/length"].numpy()[i]
+            data_true[f"state/{id}/my/type"] = data["state/type"].numpy()[i]
 
             data_true[f"state/{id}/my/current/speed"] = data["state/current/speed"].numpy()[i]
             data_true[f"state/{id}/my/current/ang"] = data["state/current/bbox_yaw"].numpy()[i]

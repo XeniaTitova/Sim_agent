@@ -7,7 +7,9 @@
     <list default="true" id="fbe85c1e-d413-4775-9f16-749f03fc7b50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prerender_utils/prerender_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prerender_utils/prerender_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualiser.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualiser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualiser_utils/visualiser_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualiser_utils/visualiser_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
