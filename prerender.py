@@ -5,7 +5,7 @@ import os
 from os.path import isfile, join
 from tqdm import tqdm
 
-from prerender_utils.prerender_utils import create_dataset, save_map_id, save_original
+from prerender_utils.prerender_utils import create_dataset, save_map_id, save_original, save_by_id
 from prerender_utils.features_description import generate_features_description
 
 path =os.getcwd()
@@ -17,7 +17,7 @@ i = 0
 for data in dataset.as_numpy_iterator():
     data = tf.io.parse_single_example(data, generate_features_description())
     i+=1
-    save_map_id(data)
-
+    #save_map_id(data)
+    save_by_id(data)
     progress_bar.update(1)
 progress_bar.close()

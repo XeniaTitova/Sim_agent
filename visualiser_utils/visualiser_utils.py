@@ -1,4 +1,4 @@
-from draw import drawRectangle, drawSegment
+from visualiser_utils.draw import drawRectangle, drawSegment
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -36,20 +36,39 @@ def findID(data):
 
 
 def plot_veicul(ax, data):
-    ids = findID(data)
-    for id in ids:
-        xy = data[f"state/{id}/my/shift"]
-        w = data[f"state/{id}/my/width"]
-        l = data[f"state/{id}/my/length"]
-        ang = data[f"state/{id}/my/current/ang"] * 180 / 3.14
-        type1 = data[f"state/{id}/my/type"]
-        plt.plot(xy, color='pink')
-        if type1 == 1:
+    all_xy = data["other/current/xy"]
+    all_w = data["other/width"]
+    all_l = data["other/length"]
+    all_ang = data["other/current/ang"] * 180 / 3.14
+    all_type = data["other/type"]
+    for xy, ang, l, w, type in zip(all_xy, all_ang, all_l, all_w, all_type):
+        xy = xy[0]
+        if xy[0] == 0 and xy[1] == 0:
             drawRectangle(ax, xy, ang, l, w, color='red')
-        if type1 == 2:
-            drawRectangle(ax, xy, ang, l, w, color='lightcoral')
-        if type1 == 2:
-            drawRectangle(ax, xy, ang, l, w, color='violet')
+        else:
+            if type == 1:
+                drawRectangle(ax, xy, ang, l, w, color='orange')
+            if type == 2:
+                drawRectangle(ax, xy, ang, l, w, color='lightcoral')
+            if type == 3:
+                drawRectangle(ax, xy, ang, l, w, color='violet')
+
+
+# def plot_veicul(ax, data):
+#     ids = findID(data)
+#     for id in ids:
+#         xy = data[f"state/{id}/my/shift"]
+#         w = data[f"state/{id}/my/width"]
+#         l = data[f"state/{id}/my/length"]
+#         ang = data[f"state/{id}/my/current/ang"] * 180 / 3.14
+#         type1 = data[f"state/{id}/my/type"]
+#         plt.plot(xy, color='pink')
+#         if type1 == 1:
+#             drawRectangle(ax, xy, ang, l, w, color='red')
+#         if type1 == 2:
+#             drawRectangle(ax, xy, ang, l, w, color='lightcoral')
+#         if type1 == 2:
+#             drawRectangle(ax, xy, ang, l, w, color='violet')
 
 
 def plot_map(ax, data):

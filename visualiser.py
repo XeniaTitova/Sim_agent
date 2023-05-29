@@ -22,7 +22,7 @@ for l in list:
     vu.plot_map(ax, data)  # dessiner les routes:
     vu.plot_veicul(ax, data)    #dessiner les veicule
 
-    plt.savefig(f"out_visual/{data['senario_ID']}.jpg")
+    plt.savefig(f"out_visual/{data['senario_ID']}_{data['my/id']}.jpg")
     plt.close()
     progress_bar.update(1)
 
