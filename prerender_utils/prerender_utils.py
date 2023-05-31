@@ -87,7 +87,7 @@ def save_map_id(data,
 
 
 def save_by_id(data,
-               distance_max=70):  # enregistre dans le format avec une map et un fichier par veicule avec les veicule l'entourant
+               distance_max=30):  # enregistre dans le format avec une map et un fichier par veicule avec les veicule l'entourant
     # créé les donnée de la carte
     id_senario = data["scenario/id"].numpy()[0].decode('utf-8')
 
