@@ -85,3 +85,43 @@ class PositionPredictor(nn.Module):
         x = self.fc2(x)
 
         return x
+
+model = PositionPredictor()
+# Définir la fonction de perte et l'optimiseur
+criterion = nn.CrossEntropyLoss()  # Mean Squared Error Loss
+optimizer = optim.Adam(model.parameters(), lr=0.01)
+
+# Entraînement du modèle
+num_epochs = 1000
+
+for epoch in range(num_epochs):
+    for images, targets in trainloader:
+
+        images = images.unsqueeze(1)
+
+        optimizer.zero_grad()
+        
+        outputs = model(images)
+
+        loss = criterion(outputs, targets)
+
+        # Backward pass et optimisation
+
+        loss.backward()
+        optimizer.step()
+
+        # Affichage de la progression de l'entraînement
+        if (epoch+1) % 100 == 0:
+            print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
+
+# Tester le modèle
+with torch.no_grad():
+    model.eval()
+    test_input = X_test  # Utilisation du tenseur X_test pour le test
+    predicted_output = model(test_input)
+
+print("Résultats du modèle :")
+for i in range(len(predicted_output)):
+    predicted = predicted_output[i]
+    exact = y_test[i]
+    print(f"Prédiction : {predicted}\t\tValeur exacte : {exact}")
